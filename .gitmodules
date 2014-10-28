@@ -1,0 +1,3 @@
+[submodule "wally"]
+	path = wally
+	url = git@github.com:BBC-News/wally.git
