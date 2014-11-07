@@ -100,70 +100,70 @@ $features.each do |feature|  # global features DO
     puts "Test Cases Added to TestRail"
     ##################################################################################################################
     #   Create Test Run based on earlier added test cases
-
-
-    run_params =  {
-        "name" => "Automated: " + feature_name + " | " + Time.now.strftime("%d/%m/%Y %H:%M"),
-        "description" => feature_description,
-        "assign_to" => 1,
-        "include_all" => false,
-        "case_ids" => $cases_ids,
-        "suite_id" => suite_id
-    }
-
-
-    run = client.send_post("add_run/#{project_id}", run_params)
-    run_id = run["id"]
-
-
-    puts "TestRun created"
-    ##################################################################################################################
-    #   Run test suite
-    puts "Running test suite"
-
-    puts "\nTest Run is commented out!!!\n"
-     #puts %x(cd ~/gitRepos/ExpediaBookingsUITests/Tablets_UI && bundle exec cucumber -p standard /Users/sbarylau/gitRepos/ExpediaBookingsUITests/Tablets_UI/features/in_development/test.feature)
-
-    puts "Test run finished"
-    ##################################################################################################################
-    #   Parse test results
-    puts "Parsing Test results"
-
-    xml_path = "/Users/sbarylau/gitRepos/ExpediaBookingsUITests/Tablets_UI/junit_format/TEST--Users-sbarylau-gitRepos-ExpediaBookingsUITests-Tablets_UI-features-in_development-test.xml"
-
-
-    doc = Nokogiri::XML( File.open(xml_path) )
-    fails = doc.xpath("//testsuite/testcase").map { |node| node.xpath("failure") }
-    parse_result = []
-    fails.each { |r| r.empty? ? parse_result << "5" : parse_result << "1" }
-
-
-    cases_with_results = (Hash[$cases_ids.zip(parse_result)]).to_a
-
-    puts "Test Results parsed"
-    ##################################################################################################################
-    #   Push test results for test run to TestRail
-    puts "Pushing Test Results"
-
-
-    cases_with_results.each do |case_result|
-      result = {
-          "case_id" => case_result[0],
-          "status_id" =>  case_result[1],
-          "comment" => "Test Comment"
-      }
-
-      test_results << result
-    end
-
-    results_params =  { "results" => test_results }
-
-
-    client.send_post("add_results_for_cases/#{run_id}", results_params)
-
-
-    ##################################################################################################################
-    puts " << SUCCESS: Test results pushed to TestRail!!! -;) >> "
+    #
+    #
+    # run_params =  {
+    #     "name" => "Automated: " + feature_name + " | " + Time.now.strftime("%d/%m/%Y %H:%M"),
+    #     "description" => feature_description,
+    #     "assign_to" => 1,
+    #     "include_all" => false,
+    #     "case_ids" => $cases_ids,
+    #     "suite_id" => suite_id
+    # }
+    #
+    #
+    # run = client.send_post("add_run/#{project_id}", run_params)
+    # run_id = run["id"]
+    #
+    #
+    # puts "TestRun created"
+    # ##################################################################################################################
+    # #   Run test suite
+    # puts "Running test suite"
+    #
+    # puts "\nTest Run is commented out!!!\n"
+    #  #puts %x(cd ~/gitRepos/ExpediaBookingsUITests/Tablets_UI && bundle exec cucumber -p standard /Users/sbarylau/gitRepos/ExpediaBookingsUITests/Tablets_UI/features/in_development/test.feature)
+    #
+    # puts "Test run finished"
+    # ##################################################################################################################
+    # #   Parse test results
+    # puts "Parsing Test results"
+    #
+    # xml_path = "/Users/sbarylau/gitRepos/ExpediaBookingsUITests/Tablets_UI/junit_format/TEST--Users-sbarylau-gitRepos-ExpediaBookingsUITests-Tablets_UI-features-in_development-test.xml"
+    #
+    #
+    # doc = Nokogiri::XML( File.open(xml_path) )
+    # fails = doc.xpath("//testsuite/testcase").map { |node| node.xpath("failure") }
+    # parse_result = []
+    # fails.each { |r| r.empty? ? parse_result << "5" : parse_result << "1" }
+    #
+    #
+    # cases_with_results = (Hash[$cases_ids.zip(parse_result)]).to_a
+    #
+    # puts "Test Results parsed"
+    # ##################################################################################################################
+    # #   Push test results for test run to TestRail
+    # puts "Pushing Test Results"
+    #
+    #
+    # cases_with_results.each do |case_result|
+    #   result = {
+    #       "case_id" => case_result[0],
+    #       "status_id" =>  case_result[1],
+    #       "comment" => "Test Comment"
+    #   }
+    #
+    #   test_results << result
+    # end
+    #
+    # results_params =  { "results" => test_results }
+    #
+    #
+    # client.send_post("add_results_for_cases/#{run_id}", results_params)
+    #
+    #
+    # ##################################################################################################################
+    # puts " << SUCCESS: Test results pushed to TestRail!!! -;) >> "
 
 
 end # global features END

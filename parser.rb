@@ -6,11 +6,11 @@ require "wally/parses_features"
 ##################################################################################################################
 
 
-features_path = "/Users/sbarylau/gitRepos/ExpediaBookingsUITests/Tablets_UI/features/regression_tablet/hotels_features"
-feature_name_pattern = "hotels_search.feature"
+# features_path = "/Users/sbarylau/gitRepos/ExpediaBookingsUITests/Tablets_UI/features/regression_tablet/hotels_features"
+# feature_name_pattern = "hotels_search.feature"
 
-# features_path = "/Users/sbarylau/gitRepos/ExpediaBookingsUITests/Tablets_UI/features/in-development"
-# feature_name_pattern = "test.feature"
+features_path = "/Users/sbarylau/gitRepos/ExpediaBookingsUITests/Tablets_UI/features/regression_tablet"
+feature_name_pattern = "**/*.feature"
 
 
 ##################################################################################################################
