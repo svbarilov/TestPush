@@ -1,8 +1,9 @@
 require 'pry'
 require 'wally'
+require 'nokogiri'
 require_relative 'parser.rb'
 require_relative 'testrail.rb'
-require 'nokogiri'
+
 
 ##################################################################################################################
 #   Define Variables
