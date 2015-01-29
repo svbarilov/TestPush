@@ -8,7 +8,7 @@ require_relative './get_sections.rb'
 require_relative './add_section.rb'
 require_relative './add_tests_to_section.rb'
 require_relative './create_run.rb'
-# require_relative './Bucket.rb'
+require_relative './clean_section.rb'
 
 
 class TestPush
@@ -30,18 +30,21 @@ class TestPush
 
 
   def add_section
-    section = AddSection.new.perform
+    AddSection.new.perform
   end
 
 
   def add_tests_to_section
-    section = AddTestsToSection.new.perform
+    AddTestsToSection.new.perform
   end
 
   def create_run
-    section = CreateRun.new.perform
+    CreateRun.new.perform
   end
 
+  def clean_section
+    CleanSection.new.perform
+  end
 
 
 end # end class BaseRail
@@ -53,10 +56,16 @@ end # end class BaseRail
 
 
 b = TestPush.new('phone', 'p_flights_checkout')
-#b.clean_section
+b.get_sections
+puts ""
 b.add_section
 b.add_tests_to_section
-b.create_run
+b.add_section
+b.add_tests_to_section
+b.clean_section
+# b.add_section
+# b.add_tests_to_section
+# b.create_run
 
 
 

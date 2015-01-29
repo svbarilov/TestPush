@@ -7,7 +7,7 @@ automation_section_params:
  phone:
   project_id: 25
   suite_id: 1586
-  automation_section_id: 23829
+  automation_section_id: 24621
  tablet:
   project_id: 25
   suite_id: 1573
