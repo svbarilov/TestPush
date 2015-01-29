@@ -63,7 +63,7 @@ module TestRail
 		#
 		# uri                 The API method to call including parameters
 		#                     (e.g. add_case/1)
-		# data                The data to submit as part of the request (as
+		# config                The config to submit as part of the request (as
 		#                     Ruby hash, strings must be UTF-8 encoded)
 		#
 		def send_post(uri, data)

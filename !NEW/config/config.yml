@@ -1,0 +1,19 @@
+global_config_params:
+ base_url: https://testrail.sea.corp.expecn.com
+ user: sbarylau
+ password: Takebreaks26
+
+automation_section_params:
+ phone:
+  project_id: 25
+  suite_id: 1586
+  automation_section_id: 23829
+ tablet:
+  project_id: 25
+  suite_id: 1573
+  automation_section_id: 19381
+
+
+
+
+
