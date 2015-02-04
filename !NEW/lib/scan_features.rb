@@ -39,8 +39,12 @@ class ScanFeatures
       @@features << {:path => feature_path, :gherkin => gherkin}
     end
 
+    scan_by_tag
+  end # end perform method
 
 
+
+  def scan_by_tag
     @@features.each do |feature|
 
       @num = true
@@ -80,6 +84,9 @@ class ScanFeatures
     Observer.set_features= @@features
     return @@features
 
-  end # end perform method
+  end # end scan by tag
+
+
+
 
 end # end class

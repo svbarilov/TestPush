@@ -19,13 +19,13 @@ class Observer
   end
 
 
-  def self.set_created_section_id= id
-    @@created_sections_id = id
+  def self.add_created_section_id id
+    @@created_sections_ids << id
   end
 
 
-  def self.created_section_id
-    @@created_sections_id
+  def self.created_sections_ids
+    @@created_sections_ids
   end
 
 

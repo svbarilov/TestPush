@@ -58,14 +58,12 @@ end # end class BaseRail
 
 
 
-b = TestPush.new('phone', '@flights_search')
-b.get_sections
-puts ""
-b.create_sections
-b.add_tests_to_sections
-b.create_sections
-b.add_tests_to_sections
+b = TestPush.new('phone', '@regression')
 b.clean_parent_section
+b.create_sections
+b.add_tests_to_sections
+b.create_sections
+b.add_tests_to_sections
 # b.add_section
 # b.add_tests_to_section
 # b.create_run
