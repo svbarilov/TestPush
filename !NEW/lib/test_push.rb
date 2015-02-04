@@ -14,9 +14,9 @@ require_relative './clean_section.rb'
 class TestPush
 
 
-  def initialize type, test_file=nil
+  def initialize type, tag=nil
     Observer.set_type= type
-    Observer.set_test_file= test_file
+    Observer.set_tag= tag
     @features = ScanFeatures.new.perform
     Observer.set_features= @features
   end
@@ -55,7 +55,7 @@ end # end class BaseRail
 
 
 
-b = TestPush.new('phone', 'p_flights_checkout')
+b = TestPush.new('phone', '@flights_search')
 b.get_sections
 puts ""
 b.add_section

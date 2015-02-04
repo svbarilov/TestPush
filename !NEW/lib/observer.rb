@@ -39,16 +39,6 @@ class Observer
   end
 
 
-  def self.set_test_file=(test_file)
-    @@test_file = test_file
-  end
-
-
-  def self.test_file
-    @@test_file
-  end
-
-
   def self.add_case_id(id)
     @@cases_ids << id
   end
@@ -64,6 +54,14 @@ class Observer
 
   def self.run_id
     @@run_id
+  end
+
+  def self.set_tag=(tag)
+    @@tag = tag
+  end
+
+  def self.tag
+    @@tag
   end
 
 
