@@ -2,7 +2,7 @@ require 'pry'
 require_relative './rail_request.rb'
 require_relative './observer.rb'
 
-class AddTestsToSection < RailRequest
+class AddTestsToSections < RailRequest
 
 
 

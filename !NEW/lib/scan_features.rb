@@ -77,6 +77,7 @@ class ScanFeatures
     @@features = @@features + @@tag_features
     @@features.uniq!
 
+    Observer.set_features= @@features
     return @@features
 
   end # end perform method

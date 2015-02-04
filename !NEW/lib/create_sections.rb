@@ -3,7 +3,7 @@ require_relative './rail_request.rb'
 require_relative './observer.rb'
 
 
-class AddSection < RailRequest
+class CreateSections < RailRequest
 
 
   def params

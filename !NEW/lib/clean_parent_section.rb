@@ -3,7 +3,7 @@ require_relative './rail_request.rb'
 require_relative './observer.rb'
 
 
-class CleanSection < RailRequest
+class CleanParentSection < RailRequest
 
 
 
