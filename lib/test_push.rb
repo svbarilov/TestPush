@@ -53,20 +53,14 @@ class TestPush
 end # end class BaseRail
 
 
-# a = TestPush.new('tablet')
-# a.get_sections
 
 
-
-b = TestPush.new('phone', '@regression')
+b = TestPush.new('phone', '@flights_regression')
 b.clean_parent_section
 b.create_sections
 b.add_tests_to_sections
-b.create_sections
-b.add_tests_to_sections
-# b.add_section
-# b.add_tests_to_section
-# b.create_run
+b.create_run
+puts ""
 
 
 

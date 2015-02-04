@@ -1,7 +1,7 @@
 global_config_params:
  base_url: https://testrail.sea.corp.expecn.com
  user: sbarylau
- password: Takebreaks26
+ password: 
 
 automation_section_params:
  phone:

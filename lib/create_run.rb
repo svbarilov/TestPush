@@ -8,15 +8,11 @@ class CreateRun < RailRequest
 
   def params
 
-    ################################
-    @feature_name = Observer.features.first[:gherkin]["name"]
-    @feature_description = Observer.features.first[:gherkin]["description"]
-    ################################
-
+    tag = Observer.tag.reverse.chop.reverse
 
     {
-        "name" => "Automated: " + @feature_name + " | " + Time.now.strftime("%d/%m/%Y %H:%M"),
-        "description" => @feature_description,
+        "name" => "Automated: " + tag.upcase + " | " + Time.now.strftime("%d/%m/%Y %H:%M"),
+        "description" => tag.gsub("_", " ").capitalize + " run",
         "assign_to" => 1,
         "include_all" => false,
         "case_ids" => Observer.cases_ids,
