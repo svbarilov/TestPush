@@ -1,11 +1,3 @@
-require "pry"
-require "wally"
-require "nokogiri"
-require "restclient"
-require "json"
-require "wally/parses_features"
-require_relative "./observer.rb"
-
 
 class ScanFeatures
 

@@ -1,8 +1,12 @@
 require 'pry'
 require 'wally'
 require 'yaml'
+require 'require_all'
+require_relative './rail_request.rb'
+require_relative './run_tests.rb'
 require_relative '../project_path.rb'
 require_relative './testrail.rb'
+require_relative './observer.rb'
 require_relative './scan_features.rb'
 require_relative './get_sections.rb'
 require_relative './create_sections.rb'
@@ -46,6 +50,11 @@ class TestPush
 
   def clean_parent_section
     CleanParentSection.new.perform
+  end
+
+
+  def run_tests
+    RunTests.new.perform
   end
 
 

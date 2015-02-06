@@ -1,5 +1,3 @@
-require_relative './observer.rb'
-require_relative './rail_request.rb'
 
 class RailRequest
 
