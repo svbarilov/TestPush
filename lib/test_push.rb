@@ -1,11 +1,15 @@
+#encoding utf-8
+
 require 'pry'
 require 'wally'
 require 'yaml'
 require 'nokogiri'
-#require 'require_all'
+require 'require_all'
+require 'encryptor'
+require 'require_all'
 require_relative './rail_request.rb'
 require_relative './run_tests.rb'
-require_relative '../project_path.rb'
+require_relative '../../project_path.rb'
 require_relative './testrail.rb'
 require_relative './observer.rb'
 require_relative './scan_features.rb'

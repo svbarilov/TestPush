@@ -3,25 +3,42 @@ class RailRequest
 
 
   def initialize
-    global_params = YAML.load_file("#{$project_path}/config/config.yml")
+    read_options_from_config
+    set_test_rail_data
+    create_test_rail_object
+  end
+
+
+  def read_options_from_config
+    global_params = YAML.load_file("#{$project_path}/TestPush/config/config.yml")
     @global_config_params = global_params['global_config_params']
     @options = @global_config_params
-    if !@options['base_url'].match(/\/$/)
-      @options['base_url'] += '/'
-    end
-    @url = @options['base_url']
-    @user = @options['user']
-    @password = @options['password']
-
-    @client = ::TestRail::APIClient.new(@url)
-    @client.user = @user
-    @client.password = @password
 
     @automation_section_params = global_params['automation_section_params'][Observer.type]
     @project_id = @automation_section_params['project_id']
     @suite_id = @automation_section_params['suite_id']
     @automation_section_id = @automation_section_params['automation_section_id']
+  end
 
+
+  def set_test_rail_data
+    if !@options['base_url'].match(/\/$/)
+      @options['base_url'] += '/'
+    end
+    @url = @options['base_url']
+    @user = @options['user']
+    @password = "0Ze\xC9]W\x8D\xD6\xCF\x9A\xA0`\n#(I"
+    @secret_key = "secret"
+    # @secret_key = @options['secret_key']
+    # @password = @options['password']
+    @password = Encryptor.decrypt(:value => @password, :key => @secret_key)
+  end
+
+
+  def create_test_rail_object
+    @client = ::TestRail::APIClient.new(@url)
+    @client.user = @user
+    @client.password = @password
   end
 
 
