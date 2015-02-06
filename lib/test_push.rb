@@ -1,7 +1,8 @@
 require 'pry'
 require 'wally'
 require 'yaml'
-require 'require_all'
+require 'nokogiri'
+#require 'require_all'
 require_relative './rail_request.rb'
 require_relative './run_tests.rb'
 require_relative '../project_path.rb'
@@ -13,6 +14,7 @@ require_relative './create_sections.rb'
 require_relative './add_tests_to_sections.rb'
 require_relative './create_run.rb'
 require_relative './clean_parent_section.rb'
+require_relative './parse_test_results.rb'
 
 
 class TestPush
@@ -57,6 +59,10 @@ class TestPush
     RunTests.new.perform
   end
 
+
+  def parse_test_results
+    ParseTestResults.new.perform
+  end
 
 
 
