@@ -9,9 +9,9 @@ class ScanFeatures
   def initialize
     case Observer.type
       when 'phone'
-        @features_path = "/Users/sbarylau/gitRepos/ExpediaBookingsUITests/Phones_UI/features/regression_phone"
+        @features_path = "#{$project_path}Phones_UI/features/regression_phone"
       when 'tablet'
-        @features_path = "/Users/sbarylau/gitRepos/ExpediaBookingsUITests/Tablets_UI/features/regression_tablet"
+        @features_path = "#{$project_path}Tablets_UI/features/regression_tablet"
     end
     @feature_name_pattern = "**/**.feature"
   end
