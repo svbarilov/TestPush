@@ -1,3 +1,5 @@
+#encoding utf-8
+
 global_config_params:
  base_url: https://testrail.sea.corp.expecn.com
  user: sbarylau
