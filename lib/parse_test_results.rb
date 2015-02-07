@@ -4,18 +4,24 @@ class ParseTestResults < RailRequest
 
 
   def perform
-    xml_path = "/Users/sbarylau/gitRepos/ExpediaBookingsUITests/Phones_UI/junit_format/TEST-features-regression_phone-flights_features-p_flights_search.xml"
+    junit_folder_path = "#{$project_path}/Phones_UI/junit_format"
+    junit_folder_content = Dir.entries (junit_folder_path)
+    junit_folder_content.delete_if { |i| i == "." || i == ".."}
 
+
+
+    junit_folder_file = junit_folder_content.first
+    xml_path = junit_folder_path + "/" + junit_folder_file
 
     doc = Nokogiri::XML( File.open(xml_path) )
     fails = doc.xpath("//testsuite/testcase").map { |node| node.xpath("failure") }
     parse_result = []
-    fails.each { |r| r.empty? ? parse_result << "5" : parse_result << "1" }
+    fails.each { |r| r.empty? ? parse_result << "1" : parse_result << "5" }
 
 
-    cases_with_results = (Hash[$cases_ids.zip(parse_result)]).to_a
+    Observer.set_cases_with_results= (Hash[Observer.cases_ids.zip(parse_result)]).to_a
 
-    puts "Test Results parsed"
+    puts "Test Results for #{Observer.tag} run parsed"
   end
 
 

@@ -5,8 +5,14 @@ class Observer
   @@cases_ids = []
 
 
+
+  def self.set_milestone=(milestone)
+    @@milestone = milestone
+  end
+
+
   def self.milestone
-    "4.5"
+    @@milestone
   end
 
   def self.set_type=(type)
@@ -48,9 +54,11 @@ class Observer
     @@cases_ids
   end
 
+
   def self.set_run_id=(id)
     @@run_id = id
   end
+
 
   def self.run_id
     @@run_id
@@ -60,9 +68,21 @@ class Observer
     @@tag = tag
   end
 
+
   def self.tag
     @@tag
   end
 
 
-end
+  def self.set_cases_with_results=(cases_with_results)
+    @@cases_with_results = cases_with_results
+  end
+
+
+  def self.cases_with_results
+    @@cases_with_results
+  end
+
+
+
+end # end class
