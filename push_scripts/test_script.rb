@@ -13,4 +13,3 @@ b.create_run
 b.run_tests ("MOCK=true")
 b.parse_test_results
 b.push_test_results
-puts ""

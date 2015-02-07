@@ -7,7 +7,7 @@ class PushTestResults < RailRequest
     {
         "case_id" => @case_result[0],
         "status_id" =>  @case_result[1],
-        "comment" => "Test Comment"
+        "comment" => "Automated Test Result"
     }
   end
 
