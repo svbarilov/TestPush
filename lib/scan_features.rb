@@ -19,6 +19,12 @@ class ScanFeatures
 
 
   def perform
+    scan_feature_files
+    scan_by_tag
+  end # end perform method
+
+
+  def scan_feature_files
     Dir.glob(File.join(@features_path, @feature_name_pattern)).each do |feature_path|
       begin
         gherkin = Wally::ParsesFeatures.new.parse(File.read(feature_path))
@@ -30,54 +36,59 @@ class ScanFeatures
       end
       @@features << {:path => feature_path, :gherkin => gherkin}
     end
-
-    scan_by_tag
-  end # end perform method
+  end
 
 
 
   def scan_by_tag
     @@features.each do |feature|
-
       @num = true
-
-      if feature[:gherkin]["tags"]
-        feature[:gherkin]["tags"].each do |tag|
-          if tag["name"] == Observer.tag
-            f = feature.clone
-            @@tag_features << f
-            @num = false
-            puts ""
-          end
-        end
-      end
-
-      if feature[:gherkin]["elements"] && @num
-        feature[:gherkin]["elements"].delete_if do |element|
-          @tag = []
-          if element["tags"]
-            element["tags"].each do |tag|
-              @tag << tag["name"]
-            end
-          end
-          !@tag.include? Observer.tag
-        end
-      end
-
+      scan_ff_for_tag feature
+      scan_scenarios_for_tag feature
     end # end each feature
-
-    @@features.delete_if do |feature|
-      (feature[:gherkin]["elements"] == []) || (feature[:gherkin]["elements"].nil?)
-    end
-
-    @@features = @@features + @@tag_features
-    @@features.uniq!
-
+    finalize_scan_resuts
     Observer.set_features= @@features
     return @@features
 
   end # end scan by tag
 
+
+  def scan_ff_for_tag feature
+    if feature[:gherkin]["tags"]
+      feature[:gherkin]["tags"].each do |tag|
+        if tag["name"] == Observer.tag
+          f = feature.clone
+          @@tag_features << f
+          @num = false
+          puts ""
+        end
+      end
+    end
+  end
+
+
+  def scan_scenarios_for_tag feature
+    if feature[:gherkin]["elements"] && @num
+      feature[:gherkin]["elements"].delete_if do |element|
+        @tag = []
+        if element["tags"]
+          element["tags"].each do |tag|
+            @tag << tag["name"]
+          end
+        end
+        !@tag.include? Observer.tag
+      end
+    end
+  end
+
+
+  def finalize_scan_resuts
+    @@features.delete_if do |feature|
+      (feature[:gherkin]["elements"] == []) || (feature[:gherkin]["elements"].nil?)
+    end
+    @@features = @@features + @@tag_features
+    @@features.uniq!
+  end
 
 
 
