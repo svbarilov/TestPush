@@ -17,7 +17,6 @@ class ScanFeatures
   end
 
 
-
   def perform
     scan_feature_files
     scan_by_tag
@@ -37,7 +36,6 @@ class ScanFeatures
       @@features << {:path => feature_path, :gherkin => gherkin}
     end
   end
-
 
 
   def scan_by_tag
