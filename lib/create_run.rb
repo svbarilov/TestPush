@@ -6,7 +6,7 @@ class CreateRun < RailRequest
   def params
 
     tag = Observer.tag.reverse.chop.reverse
-    milestone = Observer.milestone
+    milestone = Observer.milestone || "4.5"
 
     {
         "name" => "Automated: " + milestone + ", " + tag.upcase + " | " + Time.now.strftime("%d/%m/%Y %H:%M"),

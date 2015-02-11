@@ -1,4 +1,4 @@
-
+require_relative $project_path + "/TestPush/password.rb"
 class RailRequest
 
 
@@ -10,8 +10,6 @@ class RailRequest
 
 
   def read_options_from_config
-    @password1 = "0Ze\xC9]W\x8D\xD6\xCF\x9A\xA0`\n#(I"
-    @secret_key1 = "secret"
     global_params = YAML.load_file("#{$project_path}/TestPush/config/config.yml")
     @global_config_params = global_params['global_config_params']
     @options = @global_config_params
@@ -29,9 +27,7 @@ class RailRequest
     end
     @url = @options['base_url']
     @user = @options['user']
-    @secret_key = @options['secret_key']
-    @password = @options['password']
-    @password = Encryptor.decrypt(:value => @password1, :key => @secret_key1).force_encoding('UTF-8').force_encoding('UTF-8')
+    @password = Encryptor.decrypt(:value => @@password, :key => @@secret_key).force_encoding('UTF-8').force_encoding('UTF-8')
   end
 
 

@@ -1,5 +1,6 @@
 
 .DS_Store
+.password.rb
 .bundle/
 .idea/
 *.DS_Store
