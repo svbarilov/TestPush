@@ -4,7 +4,7 @@ require_relative '../lib/test_push.rb'
 
 
 
-b = TestPush.new('phone', '@regression')
+b = TestPush.new('phone', '@demo')
 b.set_milestone= "4.5"
 b.clean_parent_section
 b.create_sections

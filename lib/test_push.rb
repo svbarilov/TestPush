@@ -69,7 +69,7 @@ class TestPush
   end
 
 
-  def run_tests (run_option)
+  def run_tests (run_option = "")
     RunTests.new.perform run_option
   end
 

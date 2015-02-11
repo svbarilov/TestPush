@@ -13,7 +13,6 @@ class RailRequest
     global_params = YAML.load_file("#{$project_path}/TestPush/config/config.yml")
     @global_config_params = global_params['global_config_params']
     @options = @global_config_params
-
     @automation_section_params = global_params['automation_section_params'][Observer.type]
     @project_id = @automation_section_params['project_id']
     @suite_id = @automation_section_params['suite_id']
