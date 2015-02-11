@@ -1,8 +1,7 @@
-
+ruby/
 .DS_Store
 .password.rb
 .bundle/
-.ruby/
 .idea/
 *.DS_Store
 */.bundle/
