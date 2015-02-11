@@ -32,6 +32,11 @@ class TestPush
   end
 
 
+  def features
+    Observer.features
+  end
+
+
   def set_milestone=(milestone)
     Observer.set_milestone= milestone
   end
