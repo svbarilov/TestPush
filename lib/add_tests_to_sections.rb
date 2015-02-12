@@ -7,7 +7,7 @@ class AddTestsToSections < RailRequest
     {
         "title" => @scenario_name,
         "type_id" => 2,
-        "priority_id" => 5,
+        "priority_id" => 1,
         "estimate" => "3m",
         "milestone" => Observer.milestone,
         "custom_steps" => @scenario_steps,
