@@ -1,6 +1,0 @@
-[submodule "wally"]
-	path = wally
-	url = git@github.com:BBC-News/wally.git
-[submodule "TestPush"]
-	path = TestPush
-	url = /Users/sbarylau/gitRepos/ExpediaBookingsUITests/Dependencies/TestPush
